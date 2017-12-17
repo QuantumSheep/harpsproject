@@ -1,0 +1,22 @@
+{
+    "server": {
+        "port": 4000
+    },
+    "database": {
+        "host": "localhost",
+        "port": "9956",
+        "user": "root",
+        "pass": "koala",
+        "name": "harpshub"
+    },
+    "lang": {
+        "default": "en",
+        "accepted": [
+            "en",
+            "fr"
+        ]
+    },
+    "bcrypt": {
+        "rounds": 10
+    }
+}

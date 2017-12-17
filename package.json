@@ -12,12 +12,14 @@
   "author": "",
   "license": "Apache",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.16.2",
-    "typescript": "^2.6.2"
+    "mysql": "^2.15.0",
+    "typescript": "^2.6.2",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "@types/express": "^4.0.39",
-    "@types/node": "^8.5.1",
-    "ts-node": "^4.0.2"
+    "@types/node": "^8.5.1"
   }
 }

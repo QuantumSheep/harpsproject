@@ -1,7 +1,6 @@
 'use strict';
 
 import * as express from 'express';
-import fs = require('fs');
 
 const app = express();
 
