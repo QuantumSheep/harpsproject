@@ -1,9 +1,9 @@
 'use strict'
 
 import * as bcrypt from 'bcryptjs';
-import * as config from './config';
+import config from '../config';
 
-export const cryptToPromise = (tocrypt: string, rounds = Number(config.bcrypt.rounds)): Promise<{}> => {
+export function cryptToPromise(tocrypt: string, rounds = Number(config.bcrypt.rounds)): Promise<{}> {
     return new Promise((resolve, reject) => {
         bcrypt.genSalt(rounds, (err, salt) => {
             bcrypt.hash(tocrypt, salt, (err, hash) => {
@@ -11,15 +11,16 @@ export const cryptToPromise = (tocrypt: string, rounds = Number(config.bcrypt.ro
             });
         });
     });
-};
+}
 
-export const crypt = (tocrypt: string, callback = (err, result: string) => {}, rounds = Number(config.bcrypt.rounds)) => {
+export function crypt(tocrypt: string, callback = (err, result: string) => { }, rounds = Number(config.bcrypt.rounds)) {
     bcrypt.genSalt(rounds, (err, salt) => {
         bcrypt.hash(tocrypt, salt, (err, hash) => {
             callback(null, hash);
         });
     });
-};
+}
 
-compare = bcrypt.compare;
-export declare let compare: (s: string, hash: string, callback?: () => {}, progressCallback?) => Promise<{}>;
+export function compare(s: string, hash: string, callback?: () => {}, progressCallback?): Promise<{}> {
+    return bcrypt.compare;
+}

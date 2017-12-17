@@ -1,4 +1,6 @@
-class ErrorHandler {
+'use strict';
+
+export default class ErrorHandler {
     type: string;
     messages: string[];
 
@@ -13,5 +15,3 @@ class ErrorHandler {
         return this;
     }
 }
-
-module.exports = new ErrorHandler();

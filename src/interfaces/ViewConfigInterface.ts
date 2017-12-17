@@ -1,9 +1,9 @@
-'use script';
+'use strict';
 
-exports = {
+export default interface ViewConfig {
     title: "",
     sidebar: {
         active: false,
         selected: ""
     }
-};
+}

@@ -1,8 +1,6 @@
-'use strict'
+'use strict';
 
-import * as fs from 'fs';
-
-let config: {
+export default interface Config {
     server: {
         port: number
     },
@@ -20,8 +18,4 @@ let config: {
     bcrypt: {
         rounds: number
     }
-};
-
-config = Object.assign({}, JSON.parse(fs.readFileSync('./config.json', 'utf-8')));
-
-export = config;
+}

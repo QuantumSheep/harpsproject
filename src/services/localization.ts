@@ -1,15 +1,13 @@
 'use strict'
 
-import * as config from './config';
+import config from '../config';
 import { Request, Response } from 'express-serve-static-core';
 
 // All accepted languages
-const accepted = config.lang.accepted;
-
-exports.accepted = accepted;
+export const accepted = config.lang.accepted;
 
 // Function to get the user language and defining his cookie lang
-const get = (req: Request, res: Response, modify_lang = true): string => {
+export function get(req: Request, res: Response, modify_lang = true): string {
     let browser_lang = "";
     let lang = req.headers["accept-language"];
     
