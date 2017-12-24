@@ -1,0 +1,90 @@
+<% config.title = lang.page.register.title; %>
+    <main>
+        <div class="card bg-gray">
+                <div class="card-block container m-3 mx-auto">
+                    <h2 class="card-title"><%- lang.page.register.header %></h2>
+                    <div class="row">
+                        <form method="POST" action="/register" class="col-sm-6">
+                            <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" <%- (errors.messages.length > 0 ? "" : 'style="display:none;"') %>>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong><%- model.register.errors %></strong>
+                                <small>
+                                    <ul>
+                                        <% errors.messages.forEach((err) => { %>
+                                        <li><%- err %>
+                                        <% }); %>
+                                    </ul>
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname">
+                                    <%- lang.input.firstname %>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="addon_firstname">
+                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                    </span>
+                                    <input type="text" required="required" class="form-control" name="firstname" id="firstname" value="<%- model.register.firstname %>" placeholder="<%- lang.input.firstname %>" aria-describedby="addon_firstname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">
+                                    <%- lang.input.lastname %>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="addon_lastname">
+                                        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                                    </span>
+                                    <input type="text" required="required" class="form-control" name="lastname" id="lastname" value="<%- model.register.lastname %>" placeholder="<%- lang.input.lastname %>" aria-describedby="addon_lastname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">
+                                    <%- lang.input.email %>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="addon_email">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </span>
+                                    <input type="email" required="required" class="form-control" name="email" id="email" value="<%- model.register.email %>" placeholder="<%- lang.input.email %>" aria-describedby="addon_email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthdate">
+                                    <%- lang.input.birthdate %>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="addon_birthdate">
+                                        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                    </span>
+                                    <input type="date" required="required" class="form-control" name="birthdate" id="birthdate" value="<%- model.register.birthdate %>" placeholder="<%- lang.input.birthdate %>" aria-describedby="addon_birthdate">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">
+                                    <%- lang.input.password %>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="addon_password">
+                                        <i class="fa fa-lock" aria-hidden="true"></i>
+                                    </span>
+                                    <input type="password" required="required" class="form-control" name="password" id="password" placeholder="<%- lang.input.password %>" aria-describedby="addon_email">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-harps"><%- lang.page.register.register %></button>
+                            <div>
+                                <%- lang.page.register.alreadyregistred %>
+                                <a href="/login"><%- lang.page.register.login %></a>
+                            </div>
+                        </form>
+                        <div class="col-sm-6">
+                            <img src="/img/networking.png" width="100%" height="auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>

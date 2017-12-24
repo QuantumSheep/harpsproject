@@ -1,0 +1,61 @@
+<% config.title = lang.page.index.title; %>
+<% config.sidebar.selected = "security"; %>
+<% include ../sidenav %>
+    <section class="content-sidebar card">
+        <div class="card-block row flex-card">
+                <div class="col-lg-12">
+                    <h1>
+                        <b>Account's security</b>
+                    </h1>
+                </div>
+            <div class="col-md-6">
+                <h3><%- lang.page.account.change_pass %></h3>
+                <form method="POST" action="/account/security">
+                    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+                    
+                    <label>
+                        <%- lang.page.account.last_pass %>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="addon-password">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Ancien MDP" required="required" name="password" aria-describedby="addon-password">
+                    </div>
+
+                    <label>
+                        <%- lang.page.account.first_new_pass %>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="addon-newPassword">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Nouveau MDP" required="required" name="newPassword" aria-describedby="addon-newPassword">
+                    </div>
+
+                    <label>
+                        <%- lang.page.account.secondary_new_pass %>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="addon-verifPassword">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Nouveau MDP" required="required" name="verifPassword" aria-describedby="addon-verifPassword">
+                    </div>
+                    <br>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" <%- (model.login.error !="" ? "" :
+                        'style="display:none;"') %>>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>
+                            <%- model.login.error %>
+                        </strong>
+                    </div>
+                    <button type="submit" class="btn btn-harps">
+                        <%- lang.page.account.send %>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>

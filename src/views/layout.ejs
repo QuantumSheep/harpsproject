@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="<%- lang.name %>">
+  <head>
+    <meta charset="UTF-8">
+    <title><%- config.title %> - <%- lang.title %></title>
+    <meta name="description" content="Node is beautiful">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+        <button id="navbar-toggler" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 486.07 627.38" height="40">
+            <defs><style>.cls-1{fill:#fff;}</style></defs>
+            <title>Logo Harps EM</title>
+            <g id="Calque_2" data-name="Calque 2">
+              <g id="Layer_1" data-name="Layer 1">
+                <path class="cls-1" d="M322.42,286.05H282.05a27.23,27.23,0,0,1-24.51-15.16l-31.16-62.31a90.92,90.92,0,0,0-81.77-50.53H106.67A42.72,42.72,0,0,0,64,115.38H42.67A42.72,42.72,0,0,0,0,158.05v10.66a10.66,10.66,0,0,0,10.67,10.67H21.33v384H10.67A10.66,10.66,0,0,0,0,574.05v42.66a10.66,10.66,0,0,0,10.67,10.67H181.33A10.66,10.66,0,0,0,192,616.71V574.05a10.66,10.66,0,0,0-10.67-10.67h-4.44L363.83,393.2a61.57,61.57,0,0,0-41.41-107.15ZM106.67,495.91l-21.34,15V222.05h21.34V495.91ZM149.33,466,128,481V222.05h16.62a27.39,27.39,0,0,1,4.71.65V466Zm21.34-15V240.29L192,282.92V436.06Zm64-44.88-21.34,15V318.78a90.25,90.25,0,0,0,21.34,18.07v69.29Zm21.33-15V346.26a92.09,92.09,0,0,0,26.05,3.79h32.59Z"/>
+                <polyline class="cls-1" points="238.68 0 196.46 116.31 234.7 139.41 299.72 33.46"/>
+                <polyline class="cls-1" points="357 72.75 285.32 173.61 316.02 206.06 406.91 121.26"/>
+                <polyline class="cls-1" points="450.26 165.37 355.12 244.48 376.47 283.72 486.07 225.06"/>
+              </g>
+            </g>
+          </svg>
+        </a>
+      
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/"><%- lang.menu.home %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/documentation"><%- lang.menu.documentation %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/plans"><%- lang.menu.plans %></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav right">
+            <% if(account.secure_key != null) { %>
+              <% if(isBirthdate) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+              <% } %>
+              <li class="nav-item d-inherit">
+                <a href="/account"><div class="nav-image" style="background-image:url(https://i.imgur.com/wq43v5T.jpg)"></div></a>
+                <a class="nav-link nav-image-label" href="/account"><%- account.firstname %> <%- account.lastname %></a>
+              </li>
+              <li class="dropdown nav-item d-none d-md-block d-lg-block d-xl-block">
+                  <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" id="account_menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Account menu</span></a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="account_menu">
+                    <h6 class="dropdown-header">Services</h6>
+                    <a class="dropdown-item" href="#">Plans</a>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header">Parameters</h6>
+                    <a class="dropdown-item" href="#">My account</a>
+                    <a class="dropdown-item" href="?action=logout">Logout</a>
+                  </div>
+              </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/login"><%- lang.menu.signin %></a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div id="overlay"></div>
+    <div class="nav-jump d-none d-md-block d-lg-block d-xl-block"></div>
+    <%- body %>
+    <footer class="footer">
+      <div class="container<%- (config.sidebar.active == true ? " sidebar-mode" : "") %>">
+        <span class="text-muted">Harps Enterprise Manager.</span>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="/js/harps.js"></script>
+  </body>
+</html>

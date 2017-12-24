@@ -1,0 +1,27 @@
+$bg_primary: #245fef;
+$bg_primary_hover: #129aff;
+
+.btn {
+  background-color:transparent;
+  border:0px;
+  padding: 5px 6px;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+
+.btn:hover {
+  background:#fff;
+}
+
+.btn.btn-std {
+  width:100px;
+}
+
+.btn.bg-primary {
+  background-color: $bg_primary;
+  color: #fff;
+}
+
+.btn.bg-primary:hover {
+  background-color: $bg_primary_hover;
+}

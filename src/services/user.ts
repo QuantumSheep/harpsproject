@@ -1,14 +1,16 @@
 'use strict'
 
 import * as crypt from './crypt';
-import { Connection } from 'mysql';
+import * as userEntity from '../entities/user.entity';
+import { Connection, FieldInfo, MysqlError } from 'mysql';
+import { RowUser } from '../entities/user.entity';
 
-export function get_by_secure(conn: Connection, secure_key: string): Promise<{}> {
+export function get_by_secure(conn: Connection, secure_key: string): Promise<RowUser> {
     return new Promise((resolve, reject) => {
-        conn.query("SELECT secure_key, firstname, lastname, birthdate, email FROM users WHERE secure_key=?", secure_key, (error, results, fields) => {
-            if (error) throw error;
+        conn.query("SELECT secure_key, firstname, lastname, birthdate, email FROM users WHERE secure_key=?", secure_key, (err: MysqlError | null, results?: any, fields?: FieldInfo[] | undefined): void => {
+            if (err) throw err;
 
-            resolve(results[0]);
+            resolve(userEntity.mapper(results[0]));
         });
     });
 };

@@ -1,0 +1,51 @@
+<% config.title = lang.page.login.title; %>
+<main>
+    <div class="card bg-gray">
+        <div class="card-block container m-3 mx-auto">
+            <h2 class="card-title"><%- lang.page.login.header %></h2>
+            <div class="row">
+                <form method="POST" action="/login" class="col-sm-6">
+                    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert"<%- (model.login.error != "" ? "" : ' style="display:none;"') %>>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>
+                            <%- model.login.error %>
+                        </strong>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <%- lang.input.email %>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="addon_email">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </span>
+                            <input type="email" required="required" class="form-control" name="email" id="email" value="<%- model.login.email %>" placeholder="<%- lang.input.email %>" aria-describedby="addon_email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><%- lang.input.password %></label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="addon_password">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                            <input type="password" required="required" class="form-control" name="password" id="password" placeholder="<%- lang.input.password %>" aria-describedby="addon_email">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-harps"><%- lang.page.login.login %></button>
+                    
+                    <div>
+                        <%- lang.page.login.joinus %>
+                        <a href="/register"><%- lang.page.login.signup %></a>
+                    </div>
+                </form>
+                <div class="col-sm-6">
+                    <img src="/img/networking.png" width="100%" height="auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

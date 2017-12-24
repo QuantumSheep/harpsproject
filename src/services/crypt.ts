@@ -3,7 +3,7 @@
 import * as bcrypt from 'bcryptjs';
 import config from '../config';
 
-export function cryptToPromise(tocrypt: string, rounds = Number(config.bcrypt.rounds)): Promise<{}> {
+export function cryptToPromise(tocrypt: string, rounds: number = config.bcrypt.rounds): Promise<string> {
     return new Promise((resolve, reject) => {
         bcrypt.genSalt(rounds, (err, salt) => {
             bcrypt.hash(tocrypt, salt, (err, hash) => {
@@ -13,7 +13,7 @@ export function cryptToPromise(tocrypt: string, rounds = Number(config.bcrypt.ro
     });
 }
 
-export function crypt(tocrypt: string, callback = (err, result: string) => { }, rounds = Number(config.bcrypt.rounds)) {
+export function crypt(tocrypt: string, callback = (err: any, result: string) => { }, rounds: number = config.bcrypt.rounds): void {
     bcrypt.genSalt(rounds, (err, salt) => {
         bcrypt.hash(tocrypt, salt, (err, hash) => {
             callback(null, hash);
@@ -21,6 +21,6 @@ export function crypt(tocrypt: string, callback = (err, result: string) => { }, 
     });
 }
 
-export function compare(s: string, hash: string, callback?: () => {}, progressCallback?): Promise<{}> {
-    return bcrypt.compare;
+export function compare(s: string, hash: string): Promise<boolean> {
+    return bcrypt.compare(s, hash);
 }
