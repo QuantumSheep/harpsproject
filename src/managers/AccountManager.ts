@@ -17,7 +17,7 @@ export default class IndexManager {
         });
     }
 
-    public static update_account(conn: Connection, secure_key: string, firstname: string, lastname: string, birthdate: string, email: string) {
+    public static update_account(conn: Connection, secure_key: string, firstname?: string, lastname?: string, birthdate?: string, email?: string) {
         return new Promise((resolve, reject) => {
             let cmd = "UPDATE users SET ";
             let next = false;
