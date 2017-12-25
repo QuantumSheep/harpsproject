@@ -14,4 +14,10 @@ export default class ErrorHandler {
 
         return this;
     }
+
+    addMultiple(messages: string[]): this {
+        this.messages.concat(messages);
+
+        return this;
+    }
 }

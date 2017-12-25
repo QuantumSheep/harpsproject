@@ -1,8 +1,8 @@
-<% config.title = lang.page.login.title; %>
+<% config.title = lang.views.login.title; %>
 <main>
     <div class="card bg-gray">
         <div class="card-block container m-3 mx-auto">
-            <h2 class="card-title"><%- lang.page.login.header %></h2>
+            <h2 class="card-title"><%- lang.views.login.header %></h2>
             <div class="row">
                 <form method="POST" action="/login" class="col-sm-6">
                     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
@@ -35,11 +35,11 @@
                             <input type="password" required="required" class="form-control" name="password" id="password" placeholder="<%- lang.input.password %>" aria-describedby="addon_email">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-harps"><%- lang.page.login.login %></button>
+                    <button type="submit" class="btn btn-harps"><%- lang.views.login.login %></button>
                     
                     <div>
-                        <%- lang.page.login.joinus %>
-                        <a href="/register"><%- lang.page.login.signup %></a>
+                        <%- lang.views.login.joinus %>
+                        <a href="/register"><%- lang.views.login.signup %></a>
                     </div>
                 </form>
                 <div class="col-sm-6">

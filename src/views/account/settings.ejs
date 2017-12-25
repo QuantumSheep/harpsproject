@@ -1,15 +1,15 @@
-<% config.title = lang.page.index.title; %>
+<% config.title = lang.views.account.settings.title; %>
 <% config.sidebar.selected = "settings"; %>
 <% include ../sidenav %>
     <section class="content-sidebar card">
         <div class="card-block row flex-card">
             <div class="col-lg-12">
                 <h1>
-                    <b>Settings</b>
+                    <b><%- lang.views.account.settings.title %></b>
                 </h1>
             </div>
             <div class="col-md-6">
-                <h3>Basic informations</h3>
+                <h3><%- lang.views.account.settings.basics %></h3>
                 <form method="POST" action="/account/settings">
                     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                     
@@ -63,17 +63,17 @@
                         </strong>
                     </div>
                     <button type="submit" class="btn btn-harps">
-                        <%- lang.page.account.send %>
+                        <%- lang.button.confirm %>
                     </button>
                 </form>
             </div>
             <div class="col-md-6">
-                <h3><%- lang.page.account.picture %></h3>
+                <h3><%- lang.views.account.settings.picture %></h3>
                 <form>
                     <img alt="gaben" class="avatar rounded-2" src="https://i.imgur.com/wq43v5T.jpg" width="100%">
                     <div class="form-group mt-3">
                         <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">The image must not be upper than 20 Mo.</small>
+                        <small id="fileHelp" class="form-text text-muted"><%- lang.views.account.settings.maxPPWeight %></small>
                     </div>
                 </form>
             </div>

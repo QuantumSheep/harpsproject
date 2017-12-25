@@ -2,6 +2,7 @@
 
 import config from '../config';
 import { Request, Response } from 'express';
+import { Lang } from '../interfaces/LangInterface';
 
 // All accepted languages
 export const accepted = config.lang.accepted;
@@ -27,6 +28,6 @@ export function get(req: Request, res: Response, modify_lang = true): string {
     return browser_lang;
 }
 
-export function getLangage(langage: string) {
+export function getLangage(langage: string): Lang {
     return require(`../lang/${langage}`);
 };

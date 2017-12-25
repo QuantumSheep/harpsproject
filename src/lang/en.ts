@@ -1,6 +1,7 @@
 'use strict'
 
 import { Lang } from '../interfaces/LangInterface';
+import config from '../config';
 
 let lang: Lang = {
     name: "en",
@@ -18,12 +19,15 @@ let lang: Lang = {
         lastname: "Lastname",
         birthdate: "Birthdate"
     },
-    page: {
-        not_found: {
+    button: {
+        confirm: "Confirm"
+    },
+    views: {
+        err404: {
             title: "Page not found",
             error: "Page not found"
         },
-        forbidden: {
+        err403: {
             title: "Forbidden",
             error: "Forbidden"
         },
@@ -52,21 +56,33 @@ let lang: Lang = {
             header: "Choose your plan"
         },
         account: {
-            picture: "Profile picture",
-            profil: "Profile",
-            admin: "Account",
-            change_pass: "Modify your password",
-            last_pass: "Enter your actual password",
-            first_new_pass: "Enter your new password",
-            secondary_new_pass: "Enter your new password a second time",
-            change_name: "Modify your name",
-            change_mail: "Modify your Email",
-            change_birth: "Modify your birthdate",
-            job_done: "Change done",
-            send: "Confirm",
-            ask_password: "Please enter your password",
-
-            error_shortpass: "Your password lenght must be at least 8 chars",
+            all: {
+                job_done: "Change done",
+            },
+            companies: {
+                title: "My companies",
+            },
+            emails: {
+                title: "My emails",
+            },
+            groups: {
+                title: "Mes groupes",
+            },
+            security: {
+                title: "Account's security",
+                changePass: "Change your password",
+                oldPass: "Old password",
+                newPass: "New password",
+                newPass2: "Retype the new password",
+                wrongPassword: "Wrong old password.",
+                tooShortPassword: "The new password is too short, 8 characters minimum required."
+            },
+            settings: {
+                title: "Account's settings",
+                basics: "Basic informations",
+                picture: "Profile's picture",
+                maxPPWeight: `The image should not be more than ${config.file.maxWeight} MB.`
+            }
         }
     }
 }

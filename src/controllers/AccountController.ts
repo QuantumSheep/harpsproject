@@ -13,10 +13,8 @@ export default class AccountController {
     public static index(req: Request, res: Response) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
-
         if (req.session && req.session.secure_key) {
-            res.render('users/account/settings', { model: model });
+            res.render('account/settings', { model: model });
         } else {
             res.render('errors/404', { model: model });
         }
@@ -26,10 +24,8 @@ export default class AccountController {
     public static settings(req: Request, res: Response) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
-
         if (req.session && req.session.secure_key) {
-            res.render('users/account/settings', { model: model });
+            res.render('account/settings', { model: model });
         } else {
             res.render('errors/404', { model: model });
         }
@@ -39,10 +35,8 @@ export default class AccountController {
     public static emails(req: Request, res: Response) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
-
         if (req.session && req.session.secure_key) {
-            res.render('users/account/emails', { model: model });
+            res.render('account/emails', { model: model });
         } else {
             res.render('errors/404', { model: model });
         }
@@ -52,10 +46,8 @@ export default class AccountController {
     public static security(req: Request, res: Response) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
-
         if (req.session && req.session.secure_key) {
-            res.render('users/account/security', { model: model });
+            res.render('account/security', { model: model });
         } else {
             res.render('errors/404', { model: model });
         }
@@ -65,10 +57,8 @@ export default class AccountController {
     public static groups(req: Request, res: Response) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
-
         if (req.session && req.session.secure_key) {
-            res.render('users/account/groups', { model: model });
+            res.render('account/groups', { model: model });
         } else {
             res.render('errors/404', { model: model });
         }
@@ -78,10 +68,8 @@ export default class AccountController {
     public static companies(req: Request, res: Response) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
-
         if (req.session && req.session.secure_key) {
-            res.render('users/account/companies', { model: model });
+            res.render('account/companies', { model: model });
         } else {
             res.render('errors/404', { model: model });
         }
@@ -100,15 +88,15 @@ export default class AccountController {
                         res.render('/account/security');
                     });
                 } else {
-                    res.locals.error.add(res.locals.lang.page.account.error_shortpass);
+                    res.locals.errors.add(res.locals.lang.views.account.security.wrongPassword);
 
-                    res.render('users/account/security', { model: model });
+                    res.render('account/security', { model: model });
                 }
             });
         } else {
-            res.locals.error.add(res.locals.lang.page.account.error_shortpass);
+            res.locals.errors.add(res.locals.lang.views.account.security.tooShortPassword);
 
-            res.render('users/account/security', { model: model });
+            res.render('account/security', { model: model });
         }
     };
 
@@ -118,9 +106,8 @@ export default class AccountController {
         let conn = dbconnection.getConnection();
 
         function job_done(): void {
-            model.login.error = res.locals.lang.page.account.job_done;
+            model.login.error = res.locals.lang.views.account.all.job_done;
 
-            res.setHeader('Content-Type', 'text/html');
             res.redirect(`/account/settings`);
         };
 

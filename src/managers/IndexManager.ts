@@ -34,7 +34,6 @@ export default class IndexManager {
                     callback();
                 },
                 (callback) => {
-                    console.log(birthdate);
                     if(birthdate == null || !validator.isISO8601(birthdate)) {
                         errors.add("Birthdate is unvalid");
                     } else {
@@ -53,7 +52,11 @@ export default class IndexManager {
                     callback();
                 }
             ], (err, results) => {
-                resolve(errors);
+                if(errors.messages.length > 0) {
+                    reject(errors);
+                } else {
+                    resolve();
+                }
             });
         });
     }

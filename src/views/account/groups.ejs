@@ -1,0 +1,80 @@
+<% config.title = lang.views.account.groups.title; %>
+<% config.sidebar.selected = "groups"; %>
+<% include ../sidenav %>
+    <section class="content-sidebar card">
+        <div class="card-block row flex-card">
+            <div class="col-lg-12">
+                <h1>
+                    <b><%- lang.views.account.groups.title %></b>
+                </h1>
+                
+                <span>You don't have any groups. Select a plan to start a new group.</span>
+            </div>
+
+            <div class="col-lg-12">
+                <h3>Star a new group</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped col-lg-12 centered">
+                        <thead>
+                            <tr>
+                                <th class="not-centered"></th>
+                                <th>Basic plan</th>
+                                <th>Advanced plan</th>
+                                <th>Business plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="not-centered">Maximum mumbers</th>
+                                <td>25</td>
+                                <td>500</td>
+                                <td>Unlimited</td>
+                            </tr>
+                            <tr>
+                                <th class="not-centered">Private access manager</th>
+                                <td>No</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th class="not-centered">Process Creator</th>
+                                <td>No</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th class="not-centered">Private account manager</th>
+                                <td>No</td>
+                                <td>No</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th class="not-centered">Price</th>
+                                <td>Free</td>
+                                <td>20$/month</td>
+                                <td>90$/month</td>
+                            </tr>
+                            <tr>
+                                <th class="not-centered"></th>
+                                <td>
+                                    <div>
+                                        <a href="#" class="btn btn-harps">Start a basic group</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <a href="#" class="btn btn-harps">Start an advanced group</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <a href="#" class="btn btn-harps">Start a business group</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>

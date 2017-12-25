@@ -8,7 +8,6 @@ const router: Router = express.Router();
 
 router.get('', IndexController.index);
 
-router.get('/chat', IndexController.chat);
 router.get('/plans', IndexController.plans);
 
 router.get('/:action(register|login)', IndexController.logreg);

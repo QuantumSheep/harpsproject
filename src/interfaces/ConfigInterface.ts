@@ -15,6 +15,9 @@ export default interface Config {
         default: string,
         accepted: string[]
     },
+    file: {
+        maxWeight: number
+    },
     bcrypt: {
         rounds: number
     }

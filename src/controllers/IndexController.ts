@@ -11,22 +11,13 @@ export default class IndexController {
     public static index(req, res) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
         res.render('index/index', { model: model });
-    }
-
-    public static chat(req, res) {
-        let model = new IndexModel();
-
-        res.setHeader('Content-Type', 'text/html');
-        res.render('index/chat', { model: model });
     }
 
     // GET function for the /offers page
     public static plans(req, res) {
         let model = new IndexModel();
 
-        res.setHeader('Content-Type', 'text/html');
         res.render('index/plans', { model: model });
     }
 
@@ -35,7 +26,6 @@ export default class IndexController {
         if (req.session.secure_key == null) {
             let model = new IndexModel();
 
-            res.setHeader('Content-Type', 'text/html');
             res.render(`index/${req.params.action}`, { model: model });
         } else {
             res.redirect('/');
@@ -48,9 +38,8 @@ export default class IndexController {
             let model = new IndexModel();
 
             model.login.email = req.body.email;
-            model.login.error = res.locals.lang.page.login.error_credentials;
+            model.login.error = res.locals.lang.views.login.error_credentials;
 
-            res.setHeader('Content-Type', 'text/html');
             res.render(`index/login`, { model: model });
         };
 
@@ -77,27 +66,31 @@ export default class IndexController {
         let conn = dbconnection.getConnection();
 
         IndexManager.checkRegisterForm(req.body.firstname, req.body.lastname, req.body.email, req.body.birthdate, req.body.password, res.locals.errors).then((errors) => {
-            if (errors.messages.length == 0) {
-                IndexManager.registerUser(conn, req.body.firstname, req.body.lastname, req.body.email, req.body.birthdate, res.locals.lang.name, req.body.password).then((response) => {
-                    res.redirect('/login');
-                }).catch((response) => {
-                    model.register.firstname = req.body.firstname;
-                    model.register.lastname = req.body.lastname;
-                    model.register.email = req.body.email;
-                    model.register.birthdate = req.body.birthdate;
-
-                    res.render(`index/register`, { model: model });
-                });
-            } else {
+            IndexManager.registerUser(conn, req.body.firstname, req.body.lastname, req.body.email, req.body.birthdate, res.locals.lang.name, req.body.password).then((response) => {
+                res.redirect('/login');
+            }).catch((error) => {
                 model.register.firstname = req.body.firstname;
                 model.register.lastname = req.body.lastname;
                 model.register.email = req.body.email;
                 model.register.birthdate = req.body.birthdate;
 
-                res.locals.errors = errors;
+                if(error == "") {
+                    res.locals.errors.add();
+                } else {
+                    res.locals.errors.add();
+                }
 
                 res.render(`index/register`, { model: model });
-            }
+            });
+        }).catch((errors) => {
+            model.register.firstname = req.body.firstname;
+            model.register.lastname = req.body.lastname;
+            model.register.email = req.body.email;
+            model.register.birthdate = req.body.birthdate;
+
+            res.locals.errors = errors;
+
+            res.render(`index/register`, { model: model });
         });
     }
 }

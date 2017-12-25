@@ -12,16 +12,24 @@ import * as dbconnection from '../services/dbconnection';
 import { Connection } from "mysql";
 import { RowUser } from "../entities/user.entity";
 import ErrorHandler from "../services/ErrorHandler";
+import { Locals } from "../interfaces/LocalsInterface";
 
 export function load_data(req: Request, res: Response, callback: Function): void {
     // Auto-langages support
     let language = localization.getLangage(localization.get(req, res));
 
+    // Defining response content type to html
+    res.setHeader('Content-Type', 'text/html');
+
     // Defining the language variable for the response
-    res.locals.lang = language;
-    res.locals.config = view_config;
-    res.locals.csrfToken = req.csrfToken();
-    res.locals.errors = new ErrorHandler();
+    let locals: Locals = {
+        lang: language,
+        errors: new ErrorHandler(),
+        config: view_config,
+        csrfToken: req.csrfToken(),
+    };
+
+    res.locals = locals;
 
     // Pre-Defining the birthdate
     res.locals.isBirthdate = false;

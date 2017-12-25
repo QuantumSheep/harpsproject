@@ -1,6 +1,7 @@
 'use strict'
 
 import { Lang } from '../interfaces/LangInterface';
+import config from '../config';
 
 let lang: Lang = {
     name: "fr",
@@ -18,12 +19,15 @@ let lang: Lang = {
         lastname: "Nom de famille",
         birthdate: "Date de naissance"
     },
-    page: {
-        not_found: {
+    button: {
+        confirm: "Confirmer"
+    },
+    views: {
+        err404: {
             title: "Page non trouvée",
             error: "Page non trouvée"
         },
-        forbidden: {
+        err403: {
             title: "Accès refusé",
             error: "Accès refusé"
         },
@@ -52,21 +56,33 @@ let lang: Lang = {
             header: "Choisissez votre formule"
         },
         account: {
-            picture: "Image de profil",
-            profil: "Profil",
-            admin: "Compte",
-            change_pass: "Modification du mot de passe",
-            last_pass: "Ancien mot de passe",
-            first_new_pass: "Nouveau mot de passe",
-            secondary_new_pass: "Réentrez votre nouveau mot de passe",
-            change_name: "Modification du nom et du prénom",
-            change_mail: "Modification de l'adresse Mail",
-            change_birth: "Modification de la date de naissance",
-            job_done: "Modification effectuées",
-            send: "Confirmer",
-            ask_password: "Veuillez rentrer votre mot de passe",
-            
-            error_shortpass: "Votre mot de passe doit contenir au minimum 8 charactères",
+            all: {
+                job_done: "Changements effectués",
+            },
+            companies: {
+                title: "Mes boîtes",
+            },
+            emails: {
+                title: "Mes emails",
+            },
+            groups: {
+                title: "Mes groupes",
+            },
+            security: {
+                title: "Sécurité du compte",
+                changePass: "Changement de mot de passe",
+                oldPass: "Ancien mot de passe",
+                newPass: "Nouveau mot de passe",
+                newPass2: "Retapez le nouveau mot de passe",
+                wrongPassword: "Mauvais ancien mot de passe.",
+                tooShortPassword: "Le nouveau mot de passe est trop court, 8 caractères minimum requis."
+            },
+            settings: {
+                title: "Paramètres du compte",
+                basics: "Informations de base",
+                picture: "Image de profil",
+                maxPPWeight: `L'image ne doit pas faire plus de ${config.file.maxWeight} Mo.`
+            }
         }
     }
 }

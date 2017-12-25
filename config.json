@@ -16,6 +16,9 @@
             "fr"
         ]
     },
+    "file": {
+        "maxWeight": 20
+    },
     "bcrypt": {
         "rounds": 10
     }

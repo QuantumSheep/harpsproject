@@ -103,7 +103,7 @@ aside ul li:hover {
     border: 0;
 }
 
-.navbar-toggler:hover > .navbar-toggler-icon {
+.navbar-toggler:hover>.navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
@@ -223,10 +223,31 @@ footer .container {
     margin: 0;
 }
 
-footer .container.sidebar-mode {
-    -ms-transform: translateX(120px);
-    -webkit-transform: translateX(120px);
-    transform: translateX(120px);
+@media (min-width: 768px) {
+    footer .container.sidebar-mode {
+        max-width: calc(768px - 120px);
+        -ms-transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+}
+
+@media (min-width: 992px) {
+    footer .container.sidebar-mode {
+        max-width: calc(960px - 120px);
+        -ms-transform: translateX(120px);
+        -webkit-transform: translateX(120px);
+        transform: translateX(120px);
+    }
+}
+
+@media (min-width: 1200px) {
+    footer .container.sidebar-mode {
+        max-width: calc(1140px - 120px);
+        -ms-transform: translateX(120px);
+        -webkit-transform: translateX(120px);
+        transform: translateX(120px);
+    }
 }
 
 .btn-harps {
@@ -258,4 +279,21 @@ footer .container.sidebar-mode {
 
 .input-group-addon {
     color: #59303e;
+}
+
+.centered {
+    margin: auto;
+    text-align: center;
+}
+
+.not-centered {
+    margin: initial;
+    text-align: initial;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
