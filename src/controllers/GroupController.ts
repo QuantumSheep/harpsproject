@@ -1,18 +1,20 @@
+"use strict";
+
 import { Request, Response } from "express";
-import GroupModel from '../models/GroupModel';
+import { GroupModel } from '../models/GroupModel';
 
-'use strict'
-
-export default class GroupController {
+export class GroupController {
     public static index(req: Request, res: Response) {
-        
+
     }
 
     public static newGroup(req: Request, res: Response) {
-        if(req.query.select == '0') {
+        let model = new GroupModel();
 
-        } else if(req.query.select == '1') {
-
+        if (['0', '1', '2'].indexOf(req.query.selected) > -1) {
+            model.newGroup.selectedPlan = parseInt(req.query.selected);
         }
+
+        res.render(`group/new`, { model: model });
     }
 }

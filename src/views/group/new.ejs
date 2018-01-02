@@ -1,11 +1,13 @@
-<% config.title = lang.views.account.emails.title; %>
-<% config.sidebar.type = "account"; %>
-<% config.sidebar.selected = "emails"; %>
+<% config.title = lang.views.index.title; %>
+<% config.sidebar.type = "group"; %>
+<% config.sidebar.selected = "new"; %>
     <section class="content-sidebar card">
         <div class="card-block row flex-card">
                 <div class="col-lg-12">
                     <h1>
-                        <b><%- lang.views.account.emails.title %></b>
+                        <% if(model.newGroup.selectedPlan < 0) { %>
+                        <b>Create a new group</b>
+                        <% } %>
                     </h1>
                 </div>
             <div class="col-md-6">

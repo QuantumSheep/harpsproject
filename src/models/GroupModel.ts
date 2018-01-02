@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-export default class GroupModel {
+export class GroupModel {
     newGroup: {
         selectedPlan: number
     }
     
     constructor() {
         this.newGroup = {
-            selectedPlan: 0
+            selectedPlan: -1
         }
     }
 }

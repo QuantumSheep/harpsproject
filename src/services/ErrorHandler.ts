@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-export default class ErrorHandler {
+export class ErrorHandler {
     type: string;
     messages: string[];
 

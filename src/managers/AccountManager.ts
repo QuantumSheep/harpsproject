@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 import { Connection } from "mysql";
 import * as crypt from '../services/crypt';
 import * as async from 'async';
 import * as uuid from 'uuid';
 
-export default class IndexManager {
+export class AccountManager {
     //Change MDP
     public static change_pass(conn: Connection, secure_key: string, newpassword: string) {
         return new Promise((resolve, reject) => {

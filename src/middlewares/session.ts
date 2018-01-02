@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 import * as dbconnection from '../services/dbconnection';
 import * as session from 'express-session';

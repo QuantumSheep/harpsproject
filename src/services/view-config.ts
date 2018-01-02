@@ -1,9 +1,10 @@
-'use script';
+"use script";
 
 export default {
     title: "",
     sidebar: {
-        active: false,
+        type: null,
+        title: "",
         selected: ""
     }
 };

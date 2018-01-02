@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 import * as bcrypt from 'bcryptjs';
 import config from '../config';

@@ -1,10 +1,9 @@
-'use strict'
+"use strict";
 
-import * as express from 'express';
 import { Router } from 'express';
-import AccountController from '../controllers/AccountController';
+import { AccountController } from '../controllers/AccountController';
 
-const router: Router = express.Router();
+const router: Router = Router();
 
 router.get('/', AccountController.index);
 

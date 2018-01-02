@@ -1,10 +1,9 @@
-'use strict'
+"use strict";
 
-import * as express from 'express';
 import { Router } from 'express';
-import IndexController from '../controllers/IndexController';
+import { IndexController } from '../controllers/IndexController';
 
-const router: Router = express.Router();
+const router: Router = Router();
 
 router.get('', IndexController.index);
 

@@ -1,14 +1,16 @@
-'use strict';
+"use strict";
 
-import { Router } from 'express';
 import { TypedObject } from '../interfaces/TypedObjectInterface';
+import { Router } from 'express';
 
 import * as index from './index.route';
 import * as account from './account.route';
+import * as group from './group.route';
 
 let router: TypedObject<Router>;
 
 export default router = {
     index: index,
-    account: account
+    account: account,
+    group: group
 }

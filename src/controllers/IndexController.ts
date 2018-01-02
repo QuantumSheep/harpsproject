@@ -1,12 +1,12 @@
-'use strict'
+"use strict";
 
-import IndexManager from '../managers/IndexManager';
-import IndexModel from '../models/IndexModel';
+import { IndexManager } from '../managers/IndexManager';
+import { IndexModel } from '../models/IndexModel';
 import * as validator from 'validator';
 import { Request, Response } from 'express';
 import * as dbconnection from '../services/dbconnection';
 
-export default class IndexController {
+export class IndexController {
     // GET function for the index page ('/')
     public static index(req, res) {
         let model = new IndexModel();
@@ -74,7 +74,7 @@ export default class IndexController {
                 model.register.email = req.body.email;
                 model.register.birthdate = req.body.birthdate;
 
-                if(error == "") {
+                if (error == "") {
                     res.locals.errors.add();
                 } else {
                     res.locals.errors.add();

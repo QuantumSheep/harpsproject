@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import { Response, Request, NextFunction } from "express";
 
@@ -11,7 +11,7 @@ import view_config from '../services/view-config'
 import * as dbconnection from '../services/dbconnection';
 import { Connection } from "mysql";
 import { RowUser } from "../entities/user.entity";
-import ErrorHandler from "../services/ErrorHandler";
+import { ErrorHandler } from "../services/ErrorHandler";
 import { Locals } from "../interfaces/LocalsInterface";
 
 export function load_data(req: Request, res: Response, callback: Function): void {
@@ -25,7 +25,7 @@ export function load_data(req: Request, res: Response, callback: Function): void
     let locals: Locals = {
         lang: language,
         errors: new ErrorHandler(),
-        config: view_config,
+        config: JSON.parse(JSON.stringify(view_config)),
         csrfToken: req.csrfToken(),
     };
 

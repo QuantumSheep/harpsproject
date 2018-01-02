@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-export default class IndexModel {
+export class IndexModel {
     login: {
         email: string,
         error: string

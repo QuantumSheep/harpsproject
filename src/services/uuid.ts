@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 import * as uuidv4 from 'uuid/v4';
 import * as uuidv5 from 'uuid/v5';

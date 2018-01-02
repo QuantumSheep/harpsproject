@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 import { Lang } from '../interfaces/LangInterface';
 import config from '../config';
@@ -11,6 +11,14 @@ let lang: Lang = {
         documentation: "Documentation",
         plans: "Formules",
         signin: "Se connecter à mon compte"
+    },
+    sidebar: {
+        account: {
+            title: "Mon compte"
+        },
+        group: {
+            title: "Mes groupes"
+        }
     },
     input: {
         email: "Adresse mail",

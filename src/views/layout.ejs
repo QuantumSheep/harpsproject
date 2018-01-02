@@ -76,6 +76,14 @@
     </header>
     <div id="overlay"></div>
     <div class="nav-jump d-none d-md-block d-lg-block d-xl-block"></div>
+    <% if(config.sidebar.type) { %>
+    <aside>
+      <h4 class="aside-title"><%- lang.sidebar[config.sidebar.type].title %></h4>
+      <ul>
+          <%- include(`./sidenav/${config.sidebar.type}`) %>
+      </ul>
+    </aside>
+    <% } %>
     <%- body %>
     <footer class="footer">
       <div class="container<%- (config.sidebar.active == true ? " sidebar-mode" : "") %>">

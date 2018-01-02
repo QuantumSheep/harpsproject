@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import * as express from 'express';
 import * as httpmodule from 'http';
@@ -71,6 +71,7 @@ app.use(httpRequest.error);
 // Defining and calling routes files
 app.use('/', router.index);
 app.use('/account', router.account);
+app.use('/group', router.group);
 
 // Route not found
 app.get('*', function (req, res) {

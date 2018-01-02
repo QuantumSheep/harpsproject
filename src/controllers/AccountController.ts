@@ -1,14 +1,14 @@
-'use strict'
+"use strict";
 
-import AccountManager from '../managers/AccountManager';
-import IndexModel from '../models/IndexModel';
+import { AccountManager } from '../managers/AccountManager';
+import { IndexModel } from '../models/IndexModel';
 import * as validator from 'validator';
 import { Request, Response } from 'express';
 import * as dbconnection from '../services/dbconnection';
 import * as user from '../services/user';
 import * as moment from 'moment';
 
-export default class AccountController {
+export class AccountController {
     // GET function for the index page ('/')
     public static index(req: Request, res: Response) {
         let model = new IndexModel();
@@ -18,7 +18,7 @@ export default class AccountController {
         } else {
             res.render('errors/404', { model: model });
         }
-    };
+    }
 
     // GET function for the index page ('/profile')
     public static settings(req: Request, res: Response) {
@@ -29,7 +29,7 @@ export default class AccountController {
         } else {
             res.render('errors/404', { model: model });
         }
-    };
+    }
 
     // GET function for the index page ('/profile')
     public static emails(req: Request, res: Response) {
@@ -40,7 +40,7 @@ export default class AccountController {
         } else {
             res.render('errors/404', { model: model });
         }
-    };
+    }
 
     // GET function for the index page ('/admin')
     public static security(req: Request, res: Response) {
@@ -51,7 +51,7 @@ export default class AccountController {
         } else {
             res.render('errors/404', { model: model });
         }
-    };
+    }
 
     // GET function for the index page ('/profile')
     public static groups(req: Request, res: Response) {
@@ -62,7 +62,7 @@ export default class AccountController {
         } else {
             res.render('errors/404', { model: model });
         }
-    };
+    }
 
     // GET function for the index page ('/profile')
     public static companies(req: Request, res: Response) {
@@ -73,7 +73,7 @@ export default class AccountController {
         } else {
             res.render('errors/404', { model: model });
         }
-    };
+    }
 
     // POST function for /changepass action
     public static changepass_action(req: Request, res: Response) {
@@ -89,7 +89,7 @@ export default class AccountController {
                     });
                 } else {
                     res.locals.errors.add(res.locals.lang.views.account.security.wrongPassword);
-
+                    
                     res.render('account/security', { model: model });
                 }
             });
@@ -98,18 +98,12 @@ export default class AccountController {
 
             res.render('account/security', { model: model });
         }
-    };
+    }
 
     // POST function for /changepublic action
     public static changepublic_action(req: Request, res: Response) {
         let model = new IndexModel();
         let conn = dbconnection.getConnection();
-
-        function job_done(): void {
-            model.login.error = res.locals.lang.views.account.all.job_done;
-
-            res.redirect(`/account/settings`);
-        };
 
         if (req.session) {
             AccountManager.update_account(conn, req.session.secure_key,
@@ -118,6 +112,7 @@ export default class AccountController {
                 (validator.isISO8601(req.body.birthdate) && moment().format("YYYYMMDD") >= req.body.birthdate.replace(/-/g, '') ? req.body.birthdate : null),
                 (validator.isEmail(req.body.email) ? req.body.email : null));
         }
-        job_done();
-    };
+
+        res.redirect(`/account/settings`);
+    }
 }

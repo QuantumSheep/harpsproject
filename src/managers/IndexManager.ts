@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import { Connection } from "mysql";
 import * as crypt from '../services/crypt';
@@ -6,9 +6,9 @@ import * as moment from 'moment';
 import * as async from 'async';
 import * as uuid from 'uuid';
 import * as validator from 'validator';
-import ErrorHandler from '../services/ErrorHandler';
+import { ErrorHandler } from '../services/ErrorHandler';
 
-export default class IndexManager {
+export class IndexManager {
     public static checkRegisterForm(firstname, lastname, email, birthdate, password, errors: ErrorHandler): Promise<ErrorHandler> {
         return new Promise((resolve, reject) => {
             async.parallel([
