@@ -6,5 +6,6 @@ export default {
         type: null,
         title: "",
         selected: ""
-    }
+    },
+    scripts: [""]
 };

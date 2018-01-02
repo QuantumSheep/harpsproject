@@ -14,7 +14,7 @@ export class GroupController {
         if (['0', '1', '2'].indexOf(req.query.selected) > -1) {
             model.newGroup.selectedPlan = parseInt(req.query.selected);
         }
-
+        
         res.render(`group/new`, { model: model });
     }
 }
