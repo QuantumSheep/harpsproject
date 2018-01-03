@@ -18,10 +18,10 @@ main {
     opacity: 0;
     z-index: 2;
     position: absolute;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
-    height: 100vh;
     visibility: hidden;
     transition: visibility 0s, opacity 0.3s linear;
 }
@@ -29,11 +29,12 @@ main {
 aside {
     width: 250px;
     position: fixed;
-    height: 100%;
+    height: calc(100% - 56px);
     background-color: #272529;
     z-index: 2;
     margin-top: -10px;
     transition: all .3s;
+    overflow: auto;
 }
 
 .aside-title {
@@ -41,16 +42,24 @@ aside {
     color: white;
     background-color: #1c1b1d;
     margin: 0;
+    border: 0;
+    height: 45px;
+}
+
+aside ul li.aside-title:not(:first-of-type) {
+    margin-top: 20px;
 }
 
 aside ul {
     padding-left: 0px;
     list-style: none;
+    margin-bottom: 0rem;
 }
 
 aside ul li {
     transition: all .2s;
     border-bottom: solid 1px #3d3c3e;
+    width: 100%;
 }
 
 aside ul li a {
@@ -60,12 +69,33 @@ aside ul li a {
     display: block;
 }
 
-aside ul li.active {
+aside ul li.active:not(.aside-title) {
     background-color: #421626 !important;
 }
 
-aside ul li:hover {
+aside ul li:hover:not(.aside-title) {
     background-color: #49182a;
+}
+
+.aside-disconnect:hover {
+    background-color: #501919 !important;
+}
+
+.aside-disconnect i {
+    float: right;
+    line-height: inherit;
+    transition: all 0.2s;
+}
+
+.aside-disconnect:hover i {
+    animation-name: logouticon;
+    animation-duration: 0.5s;
+}
+
+@keyframes logouticon {
+    0% { transform: translateX(0px); }
+    50% { transform: translateX(-10px); }
+    100% { transform: translateX(0px); }
 }
 
 .content-sidebar {
@@ -85,6 +115,7 @@ aside ul li:hover {
     }
     aside {
         transform: translateX(-250px);
+        height: calc(100% - 47px);
     }
 }
 
@@ -279,6 +310,12 @@ footer .container {
 .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(202, 54, 99, 0.5);
+}
+
+input:focus, .form-control:focus {
+    border-color: #7c1834;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(185, 20, 66, .25);
 }
 
 .input-group-addon {
