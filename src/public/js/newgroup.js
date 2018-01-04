@@ -1,3 +1,5 @@
+"use strict";
+
 var plans = ['0', '1', '2'];
 
 var choicesObj = {

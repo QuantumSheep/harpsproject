@@ -1,3 +1,5 @@
+"use strict";
+
 var aside_active = false;
 
 function enableOverlay() {

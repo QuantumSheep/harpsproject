@@ -1,6 +1,7 @@
 "use strict";
 
 export default interface Config {
+    env: string,
     server: {
         port: number
     },

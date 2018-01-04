@@ -1,7 +1,7 @@
 "use strict";
 
 import * as express from 'express';
-import * as httpmodule from 'http';
+import * as http from 'http';
 import * as socketio from 'socket.io';
 
 import * as helmet from 'helmet';
@@ -19,8 +19,8 @@ import config from './config';
 import router from './routes/router';
 
 const app = express();
-const http = new httpmodule.Server(app);
-const io = socketio(http);
+const server = new http.Server(app);
+const io = socketio(server);
 
 // Defining EJS as the view engine
 app.set('view engine', 'ejs');
@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 app.set('trust proxy', 1);
 
 // Get some directories to static (like in the root directoy)
-app.use(express.static('src/public'));
+app.use(express.static(`${config.env == "dev" ? "src" : "dist"}/public`));
 
 // Defining the views directory
 app.set('views', 'src/views');
@@ -82,7 +82,7 @@ app.get('*', function (req, res) {
 // Trying to the server, if impossible, log an error message
 try {
     // Listen to a specific port
-    http.listen(config.server.port, () => {
+    server.listen(config.server.port, () => {
         console.log(`Harps Compagny Manager now launched on port ${config.server.port} !`);
     });
 } catch (e) {
