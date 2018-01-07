@@ -7,6 +7,8 @@ import { Request, Response } from 'express';
 import * as dbconnection from '../services/dbconnection';
 import * as user from '../services/user';
 import * as moment from 'moment';
+import * as formidable from 'formidable';
+import { FileUploader, MB } from '../services/FileUploader';
 
 export class AccountController {
     // GET function for the index page ('/')
@@ -89,7 +91,7 @@ export class AccountController {
                     });
                 } else {
                     res.locals.errors.add(res.locals.lang.views.account.security.wrongPassword);
-                    
+
                     res.render('account/security', { model: model });
                 }
             });

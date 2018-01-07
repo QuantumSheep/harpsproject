@@ -1,6 +1,7 @@
 <% config.title = lang.views.account.settings.title; %>
 <% config.sidebar.type = "account"; %>
 <% config.sidebar.selected = "settings"; %>
+<% config.scripts = ['account.js']; %>
     <main class="content-sidebar card">
         <div class="card-block row flex-card">
             <div class="col-lg-12">
@@ -8,7 +9,21 @@
                     <b><%- lang.views.account.settings.title %></b>
                 </h1>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-4">
+                <form id="profilpic" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+                    <div class="col-lg-12 centered">
+                        <img id="avatar" class="avatar rounded-2" src="/avatars/<%- account.idusers %>" width="128px">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="file" class="form-control-file" id="ppinput" name="ppinput" aria-describedby="fileHelp">
+                        <small class="form-text text-muted"><%- lang.views.account.settings.maxPPWeight %></small>
+                    </div>
+                    <progress id="progress" value="0" max="100"></progress>
+                    <button class="btn btn-harps">Valider</button>
+                </form>
+            </div>
+            <div class="col-md-6 col-lg-8">
                 <h3><%- lang.views.account.settings.basics %></h3>
                 <form method="POST" action="/account/settings">
                     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
@@ -67,15 +82,24 @@
                     </button>
                 </form>
             </div>
-            <div class="col-md-6">
-                <h3><%- lang.views.account.settings.picture %></h3>
-                <form>
-                    <img alt="gaben" class="avatar rounded-2" src="https://i.imgur.com/wq43v5T.jpg" width="100%">
-                    <div class="form-group mt-3">
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted"><%- lang.views.account.settings.maxPPWeight %></small>
-                    </div>
-                </form>
-            </div>
         </div>
     </main>
+    <div class="modal fade" id="modal-ppinput" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>

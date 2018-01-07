@@ -72,6 +72,7 @@ app.use(httpRequest.error);
 app.use('/', router.index);
 app.use('/account', router.account);
 app.use('/group', router.group);
+app.use('/avatars', router.avatars);
 
 // Route not found
 app.get('*', function (req, res) {

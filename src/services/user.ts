@@ -6,7 +6,7 @@ import { RowUser } from '../entities/user.entity';
 
 export function get_by_secure(conn: Connection, secure_key: string): Promise<RowUser> {
     return new Promise((resolve, reject) => {
-        conn.query("SELECT secure_key, firstname, lastname, birthdate, email FROM users WHERE secure_key=?", secure_key, (err: MysqlError | null, results?: any, fields?: FieldInfo[] | undefined): void => {
+        conn.query("SELECT idusers, secure_key, firstname, lastname, birthdate, email FROM users WHERE secure_key=?", secure_key, (err: MysqlError | null, results?: any, fields?: FieldInfo[] | undefined): void => {
             if (err) throw err;
 
             resolve(RowUser.mapper(results[0]));

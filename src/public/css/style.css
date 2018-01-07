@@ -359,3 +359,7 @@ input:focus, .form-control:focus {
     backface-visibility: hidden;
     transform: scale(1.03);
 }
+
+.modal.active {
+    display: block;
+}
