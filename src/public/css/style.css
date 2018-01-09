@@ -93,9 +93,15 @@ aside ul li:hover:not(.aside-title) {
 }
 
 @keyframes logouticon {
-    0% { transform: translateX(0px); }
-    50% { transform: translateX(-10px); }
-    100% { transform: translateX(0px); }
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 .content-sidebar {
@@ -312,7 +318,8 @@ footer .container {
     box-shadow: 0 0 0 .2rem rgba(202, 54, 99, 0.5);
 }
 
-input:focus, .form-control:focus {
+input:focus,
+.form-control:focus {
     border-color: #7c1834;
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(185, 20, 66, .25);
@@ -362,4 +369,60 @@ input:focus, .form-control:focus {
 
 .modal.active {
     display: block;
+}
+
+.avatar-upload {
+    cursor: pointer;
+    opacity: 1;
+    display: inline-block;
+    max-width: 100%;
+    width: 128px;
+    background-color: black;
+}
+
+.avatar-upload img {
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.avatar-upload:hover img,
+.avatar-upload.focused img {
+    opacity: 0.7;
+}
+
+.avatar-hovertxt {
+    opacity: 0;
+    color: white;
+    position: absolute;
+    width: 128px;
+    z-index: 2;
+    font-size: 20px;
+    transition: all 0.3s;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 50%;
+    overflow: auto;
+}
+
+.avatar-upload:hover .avatar-hovertxt,
+.avatar-upload.focused .avatar-hovertxt {
+    opacity: 1;
+}
+
+.avatar-upload.focused .notvisible {
+    transition: all 0s;
+}
+
+.notdisplayed {
+    display: none;
+}
+
+.notvisible {
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+img {
+    max-width: 100% !important;
 }

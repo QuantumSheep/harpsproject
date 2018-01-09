@@ -7,5 +7,6 @@ export default {
         title: "",
         selected: ""
     },
+    styles: [],
     scripts: []
 };

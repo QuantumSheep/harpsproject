@@ -6,7 +6,7 @@ import * as localization from '../services/localization';
 import * as user from '../services/user';
 import * as moment from 'moment';
 
-import view_config from '../services/view-config'
+import view_config from '../services/view-config';
 
 import * as dbconnection from '../services/dbconnection';
 import { Connection } from "mysql";

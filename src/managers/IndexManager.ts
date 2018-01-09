@@ -4,7 +4,8 @@ import { Connection } from "mysql";
 import * as crypt from '../services/crypt';
 import * as moment from 'moment';
 import * as async from 'async';
-import * as uuid from 'uuid';
+import * as uuidv4 from 'uuid/v4';
+import * as uuidv5 from 'uuid/v5';
 import * as validator from 'validator';
 import { ErrorHandler } from '../services/ErrorHandler';
 
@@ -74,14 +75,14 @@ export class IndexManager {
                             });
                         },
                         secure_key: (callback) => {
-                            crypt.crypt(uuid.v5(email, uuid.v4()), (err, result) => {
+                            crypt.crypt(uuidv5(email, uuidv4()), (err, result) => {
                                 callback(err, result);
                             });
                         }
                     }, (err, results) => {
                         new Promise((resolve, reject) => {
                             resolve([
-                                uuid.v4(),
+                                uuidv4(),
                                 firstname,
                                 lastname,
                                 email,

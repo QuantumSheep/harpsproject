@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <% if(config.styles) { config.styles.forEach((style) => { %><%- '<link rel="stylesheet" href="' + style + '">' %><% }); } %>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
@@ -50,7 +51,7 @@
             </li>
               <% } %>
               <li class="nav-item d-inherit">
-                <a href="/account"><div class="nav-image" style="background-image:url(https://i.imgur.com/wq43v5T.jpg)"></div></a>
+                <a href="/account"><div id="pic" class="nav-image" style="background-image:url('/avatars/<%- account.idusers %>')"></div></a>
                 <a class="nav-link nav-image-label" href="/account"><%- account.firstname %> <%- account.lastname %></a>
               </li>
             <% } else { %>
@@ -84,6 +85,6 @@
     </footer>
     <script src="/js/helpers.js"></script>
     <script src="/js/harps.js"></script>
-    <% if(config.scripts) { config.scripts.forEach((script) => { %><%- '<script src="/js/' + script + '"></script>' %><% }); } %>
+    <% if(config.scripts) { config.scripts.forEach((script) => { %><%- '<script src="' + script + '"></script>' %><% }); } %>
   </body>
 </html>

@@ -17,8 +17,8 @@
             "fr"
         ]
     },
-    "file": {
-        "maxWeight": 20
+    "directories": {
+        "avatars": "avatars/"
     },
     "bcrypt": {
         "rounds": 10

@@ -88,8 +88,7 @@ let lang: Lang = {
             settings: {
                 title: "Account's settings",
                 basics: "Basic informations",
-                picture: "Profile's picture",
-                maxPPWeight: `The image should not be more than ${config.file.maxWeight} MB.`
+                picture: "Profile's picture"
             }
         }
     }

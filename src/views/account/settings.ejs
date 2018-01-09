@@ -1,7 +1,8 @@
 <% config.title = lang.views.account.settings.title; %>
 <% config.sidebar.type = "account"; %>
 <% config.sidebar.selected = "settings"; %>
-<% config.scripts = ['account.js']; %>
+<% config.styles = ['/libs/cropper/cropper.min.css']; %>
+<% config.scripts = ['/libs/cropper/cropper.min.js', '/js/account.js']; %>
     <main class="content-sidebar card">
         <div class="card-block row flex-card">
             <div class="col-lg-12">
@@ -9,21 +10,26 @@
                     <b><%- lang.views.account.settings.title %></b>
                 </h1>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-5 col-lg-4">
                 <form id="profilpic" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+                    <input type="file" id="ppinput" name="ppinput" accept="image/png, image/jpeg" class="notdisplayed">
+
                     <div class="col-lg-12 centered">
-                        <img id="avatar" class="avatar rounded-2" src="/avatars/<%- account.idusers %>" width="128px">
+                        <div id="avatar-upload" class="avatar-upload">
+                            <div id="avatar-hovertxt" class="avatar-hovertxt">Update</div>
+                            <div id="avatar-hovertxtdrop" class="avatar-hovertxt notvisible">Drop here to update</div>
+                            <img id="avatar" class="rounded-2" src="/avatars/<%- account.idusers %>" crossorigin="anonymous">
+                        </div>
                     </div>
-                    <div class="form-group mt-3">
-                        <input type="file" class="form-control-file" id="ppinput" name="ppinput" aria-describedby="fileHelp">
-                        <small class="form-text text-muted"><%- lang.views.account.settings.maxPPWeight %></small>
+                    <br>
+                    <div class="col-lg-12 centered">
+                        <progress id="progress" value="0"></progress>
+                        <button class="btn btn-harps">Valider</button>
                     </div>
-                    <progress id="progress" value="0" max="100"></progress>
-                    <button class="btn btn-harps">Valider</button>
                 </form>
             </div>
-            <div class="col-md-6 col-lg-8">
+            <div class="col-md-7 col-lg-8">
                 <h3><%- lang.views.account.settings.basics %></h3>
                 <form method="POST" action="/account/settings">
                     <input type="hidden" name="_csrf" value="<%- csrfToken %>">
@@ -84,22 +90,24 @@
             </div>
         </div>
     </main>
-    <div class="modal fade" id="modal-ppinput" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form class="modal fade" id="modal-ppinput" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <img id="imagecropper" src="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </form>

@@ -6,6 +6,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as formidable from 'formidable';
 import { FileUploader, MB } from "../services/FileUploader";
+import config from '../config';
 
 export class AvatarsController {
     public static findAvatar(req: Request, res: Response) {
@@ -26,35 +27,31 @@ export class AvatarsController {
         });
 
         form.on('file', (name, file) => {
-            let extension = new RegExp(/^.*\.(.*)$/i).exec(file.name);
-            let acceptedType = [
-                "jpg",
-                "jpeg",
-                "png"
-            ];
+            let acceptedType = {
+                "image/jpeg": "jpg",
+                "image/png": "png"
+            };
 
-            if (extension && extension[1] && acceptedType.indexOf(extension[1]) > -1) {
-                let fileupload = new FileUploader(`${path.resolve('avatars')}/`, 20 * MB);
+            if (acceptedType[file.type]) {
+                let fileupload = new FileUploader(`${path.resolve(config.directories.avatars)}/`, 20 * MB);
                 
-                fileupload.image(`${res.locals.account.idusers}.${extension[1]}`, file)
+                res.setHeader("Content-Type", "text/plain");
+
+                fileupload.image(`${res.locals.account.idusers}.${acceptedType[file.type]}`, file)
                     .then(value => {
                         glob(path.resolve(`avatars/${res.locals.account.idusers}.*`), (err, matches) => {
                             matches.forEach((match) => {
-                                if (extension && path.resolve(match) != path.resolve(`avatars/${res.locals.account.idusers}.${extension[1]}`)) {
+                                if (acceptedType[file.type] && path.resolve(match) != path.resolve(`${config.directories.avatars}${res.locals.account.idusers}.${acceptedType[file.type]}`)) {
                                     fs.unlink(match, err => { });
                                 }
                             });
                         });
 
-                        res.setHeader("Content-Type", "text/plain");
                         res.end('done');
                     })
                     .catch(err => {
-                        res.setHeader("Content-Type", "text/plain");
                         res.end(err);
                     });
-            } else {
-                res.end("INVALIDFILETYPE");
             }
         });
     }
