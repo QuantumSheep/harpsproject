@@ -33,8 +33,8 @@ export class AvatarsController {
             };
 
             if (acceptedType[file.type]) {
-                let fileupload = new FileUploader(`${path.resolve(config.directories.avatars)}/`, 20 * MB);
-                
+                let fileupload = new FileUploader(`${path.resolve(config.directories.avatars)}/`, 1 * MB);
+
                 res.setHeader("Content-Type", "text/plain");
 
                 fileupload.image(`${res.locals.account.idusers}.${acceptedType[file.type]}`, file)
