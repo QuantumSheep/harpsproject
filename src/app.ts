@@ -29,10 +29,10 @@ app.set('view engine', 'ejs');
 app.set('trust proxy', 1);
 
 // Get some directories to static (like in the root directoy)
-app.use(express.static(`${config.env == "dev" ? "src" : "dist"}/public`));
+app.use(express.static(`${process.env.NODE_ENV !== "production" ? "src/" : ""}public`));
 
 // Defining the views directory
-app.set('views', 'src/views');
+app.set('views', `${process.env.NODE_ENV !== "production" ? "src/" : ""}views`);
 
 // Resolve some HTTP issues
 app.use(helmet());
